@@ -1,0 +1,4 @@
+﻿  lab2.cpp
+H:\TP\lab2\lab2\lab2.cpp(54,23): warning C4018: <: несоответствие типов со знаком и без знака
+H:\TP\lab2\lab2\lab2.cpp(70,23): warning C4018: <: несоответствие типов со знаком и без знака
+  lab2.vcxproj -> H:\TP\lab2\Debug\lab2.exe
