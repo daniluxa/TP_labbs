@@ -1,0 +1,3 @@
+﻿  lab6.cpp
+C:\Users\shumkin\Documents\GitHub\Education\TP_labbs\lab6\lab6.cpp(12,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  lab6.vcxproj -> C:\Users\shumkin\Documents\GitHub\Education\TP_labbs\lab6\x64\Debug\lab6.exe
