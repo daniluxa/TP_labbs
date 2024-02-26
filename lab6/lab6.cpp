@@ -9,80 +9,117 @@
 
 using namespace::std;
 
-struct tnode 
-{                // узел дерева
-    char* word;                  // указатель на строку (слово)
-    int count;                   // число вхождений
-    struct tnode* left;          // левый потомок
-    struct tnode* right;         // правый потомок
-};
-// Функция добавления узла к дереву
-struct tnode* addtree(struct tnode* p, char* w) 
-{
-    int cond;
-    if (p == NULL) 
-    {
-        p = (struct tnode*)malloc(sizeof(struct tnode));
-        p->word = _strdup(w);
-        p->count = 1;
-        p->left = p->right = NULL;
-    }
-    else if ((cond = strcmp(w, p->word)) == 0)
-        p->count++;
-    else if (cond < 0)
-        p->left = addtree(p->left, w);
-    else
-        p->right = addtree(p->right, w);
-    return p;
-}
-// Функция удаления поддерева
-void freemem(tnode* tree) 
-{
-    if (tree != NULL) 
-    {
-        freemem(tree->left);
-        freemem(tree->right);
-        free(tree->word);
-        free(tree);
-    }
-}
-// Функция вывода дерева
-void treeprint(struct tnode* p) 
-{
-    if (p != NULL) 
-    {
-        treeprint(p->left);
-        printf("%d %s\n", p->count, p->word);
-        treeprint(p->right);
-    }
-}
+//struct node
+//{
+//    int info;                           //Информационное поле
+//    unique_ptr <node> l;                   //Левая часть дерева
+//    unique_ptr <node> r;                   //Правая часть дерева
+//};
+//
+//void add(int a, node** t)
+//{
+//    if ((*t) == NULL)                   //Если дерева не существует
+//    {
+//        (*t) = new node;                //Выделяем память
+//
+//        (*t)->info = a;                 //Кладем в выделенное место аргумент a
+//        //(*t)->l = (*t)->r = NULL;       //Очищаем память для следующего роста
+//        return;                         //Заложили семечко, выходим
+//    }
+//    //Дерево есть
+//    if (a > (*t)->info) add(a, &(*t)->r); //Если аргумент а больше чем текущий элемент, кладем его вправо
+//    else add(a, &(*t)->l);                //Иначе кладем его влево
+//}
+//
+//void print(node* t, int u)
+//{
+//    if (t == NULL) return;                  //Если дерево пустое, то отображать нечего, выходим
+//    else
+//    {
+//        print(t->l, ++u);                   //С помощью рекурсии посещаем левое поддерево
+//        for (int i = 0; i < u; ++i) cout << "|";
+//        cout << t->info << endl;            //И показываем элемент
+//        u--;
+//    }
+//    print(t->r, ++u);                       //С помощью рекурсии посещаем правое поддерево
+//}
 
-void task1()
+//void task1()
+//{
+//    node* tree = NULL;
+//    int n;                              //Количество элементов
+//    int s;                              //Число, передаваемое в дерево
+//    cout << "введите количество элементов  ";
+//    cin >> n;                           //Вводим количество элементов
+//
+//    for (int i = 0; i < n; ++i)
+//    {
+//        cout << "ведите число  ";
+//        cin >> s;                       //Считываем элемент за элементом
+//
+//        add(s, &tree);                 //И каждый кладем в дерево
+//    }
+//    cout << "ваше дерево\n";
+//    print(tree, 0);
+//    cin.ignore().get();
+//}
+
+
+class Rocket
 {
-    struct tnode* root;
-    char word[MAXWORD];
-    root = NULL;
-    do 
+public:
+    string name = "";
+    int power = 0;
+    float length = 0;
+    float weight = 0;
+    Rocket() {};
+    ~Rocket() {}
+
+    void print()
     {
-        scanf_s("%s", word, MAXWORD);
-        if (isalpha(word[0]))
-            root = addtree(root, word);
-    } while (word[0] != '0');    // условие выхода – ввод символа '0'
-    treeprint(root);
-    freemem(root);
-    getchar();
-    getchar();
-}
+        cout << "Имя: " << name << endl;
+        cout << "Мощность: " << power << endl;
+        cout << "Длина: " << length << endl;
+        cout << "Вес: " << weight << endl;
+    }
+
+    void Init(string name, int power, float length, float weight)
+    {
+        this->name = name;
+        this->power = power;
+        this->length = length;
+        this->weight = weight;
+    }
+};
+
 
 void task2()
 {
+    string name = "";
+    int power = 0;
+    float length = 0, weight = 0;
+
+    cout << "Введите имя ракеты" << endl;
+    cin >> name;
+    cout << "Введите мощность ракеты" << endl;
+    cin >> power;
+    cout << "Введите длину ракеты" << endl;
+    cin >> length;
+    cout << "Введите вес ракеты" << endl;
+    cin >> weight;
+
+    unique_ptr<Rocket> rocket(new Rocket);
+    rocket->Init(name, power, length, weight);
+    rocket->print();
+
+
 
 }
 
 int main()
 {
     setlocale(LC_ALL, "rus");
-    task1();
-    //task2();
+    //task1();
+    task2();
     return 0;
 }
