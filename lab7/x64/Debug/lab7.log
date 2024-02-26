@@ -1,2 +1,13 @@
 ﻿  lab7.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\numeric(525,20): warning C4244: =: преобразование "_Ty" в "float", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\shumkin\Documents\GitHub\Education\TP_labbs\lab7\lab7.cpp(59,5): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::iota<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,int>(_FwdIt,_FwdIt,int)"
+          with
+          [
+              _Ty=float,
+              _FwdIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<float>>>
+          ]
   lab7.vcxproj -> C:\Users\shumkin\Documents\GitHub\Education\TP_labbs\lab7\x64\Debug\lab7.exe
